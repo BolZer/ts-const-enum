@@ -1,4 +1,6 @@
-# Description
+# PHP-CONST-TO-TYPESCRIPT
+
+## Description
 
 This tool will transform PHP Scalar-Constants - which are public - to Typescript Constants and generates Typescript Enums from PHP Makeshift-Enums.
 This is useful if you want to reference a value in a condition. You can easily import the generated constants. This has
