@@ -16,7 +16,16 @@ class GenerateCommand extends Command
         private Config $config,
         private ClassLoader $classLoader
     ) {
-        parent::__construct('generate');
+        parent::__construct();
+    }
+
+    protected function configure()
+    {
+        $this
+            ->setName('generate')
+            ->setDescription('Transforms PHP constants to Typescript')
+            ->setHelp('Transforms PHP constants to typescript and generates a file containing the typescript constants')
+            ;
     }
 
     protected function execute(InputInterface $input, OutputInterface $output): int

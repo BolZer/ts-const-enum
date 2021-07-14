@@ -34,6 +34,7 @@ if (!$config->isValid()) {
 }
 
 $consoleApplication = new Application();
+$consoleApplication->setName('PHP-CONST-TO-TYPESCRIPT');
 $consoleApplication->add(new GenerateCommand($config, $classLoader));
 $consoleApplication->run();
 

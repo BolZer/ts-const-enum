@@ -73,3 +73,4 @@ fabric.properties
 .generated/
 .php-const-to-ts-config.php
 composer.phar
+./TestPackage

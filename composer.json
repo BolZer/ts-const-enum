@@ -1,7 +1,8 @@
 {
   "name": "bolzer/php-const-to-typescript",
+  "bin": ["bin/php-const-to-ts.php"],
   "description": "A command line tool to generate typescript constants from your php constants",
-  "minimum-stability": "stable",
+  "minimum-stability": "dev",
   "license": "MIT",
   "authors": [
     {
