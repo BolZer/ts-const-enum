@@ -1,0 +1,40 @@
+{
+  "name": "bolzer/php-const-to-typescript",
+  "description": "A command line tool to generate typescript constants from your php constants",
+  "minimum-stability": "stable",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Jan Noehles",
+      "email": "noehles.jan@gmail.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "PhpConstToTsConst\\": ""
+    },
+    "exclude-from-classmap": [
+      "/Tests/"
+    ]
+  },
+  "require": {
+    "php": ">=8.0",
+    "doctrine/annotations": "^1.13",
+    "symfony/console": "^5.3",
+    "symfony/validator": "^5.3"
+  }
+  ,
+  "require-dev": {
+    "friendsofphp/php-cs-fixer": "^3.0",
+    "phpunit/phpunit": "^9.5",
+    "roave/security-advisories": "dev-latest",
+    "vimeo/psalm": "^4.8",
+    "phpspec/prophecy": "~1.0"
+  },
+  "config": {
+    "sort-packages": true,
+    "platform": {
+      "php": "8.0"
+    }
+  }
+}
