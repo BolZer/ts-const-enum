@@ -13,14 +13,11 @@
   "autoload": {
     "psr-4": {
       "PhpConstToTsConst\\": ""
-    },
-    "exclude-from-classmap": [
-      "/Tests/"
-    ]
+    }
   },
   "require": {
     "php": ">=8.0",
-    "doctrine/annotations": "^1.13",
+    "doctrine/annotations": "1.13.x-dev",
     "symfony/console": "^5.3",
     "symfony/validator": "^5.3"
   }

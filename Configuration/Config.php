@@ -21,7 +21,7 @@ class Config implements SelfValidationInterface
     private bool $shouldGenerateEnums = true;
     private bool $shouldAddGenerateHint = true;
 
-    /** @var String[]  */
+    /** @var string[] */
     private array $excludeClassRegex = [];
 
     public static function loadConstraints(ClassMetadata $metadata): void

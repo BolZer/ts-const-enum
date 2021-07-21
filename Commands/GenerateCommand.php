@@ -6,6 +6,7 @@ namespace PhpConstToTsConst\Commands;
 
 use Composer\Autoload\ClassLoader;
 use PhpConstToTsConst\Configuration\Config;
+use PhpConstToTsConst\Services\TransformService;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -19,18 +20,21 @@ class GenerateCommand extends Command
         parent::__construct();
     }
 
-    protected function configure()
+    protected function configure(): void
     {
         $this
             ->setName('generate')
             ->setDescription('Transforms PHP constants to Typescript')
             ->setHelp('Transforms PHP constants to typescript and generates a file containing the typescript constants')
-            ;
+        ;
     }
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        $this->generateTypescriptCodeFromConstantsAndWriteToFiles($output);
+        //$this->generateTypescriptCodeFromConstantsAndWriteToFiles($output);
+
+        $service = new TransformService($this->config, $this->classLoader);
+        $result = $service->transformAnnotatedConstantsToTypescriptCode();
 
         return 1;
     }
@@ -237,15 +241,15 @@ class GenerateCommand extends Command
      */
     private function readRegularExpressionFromConfigFileToMatchRelevantClasses(): array
     {
-        if(!$this->config->getExcludeClassRegex()){
+        if (!$this->config->getExcludeClassRegex()) {
             return $this->classLoader->getClassMap();
         }
 
         $buffer = [];
-        foreach($this->classLoader->getClassMap() as $class => $classPath){
+        foreach ($this->classLoader->getClassMap() as $class => $classPath) {
             $regexResults = \array_map(static fn (string $regex) => (bool)preg_match($regex, $class), $this->config->getExcludeClassRegex());
 
-            if(\in_array(true, $regexResults, true)){
+            if (\in_array(true, $regexResults, true)) {
                 continue;
             }
 
