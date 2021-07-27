@@ -1,15 +1,11 @@
 <?php
 
-namespace Traits;
+declare(strict_types=1);
 
+namespace Bolzer\TsConstEnum\Tests\Traits;
+
+use Bolzer\TsConstEnum\Tests\Fixtures\AnnotationTestFixture;
 use Composer\Autoload\ClassLoader;
-use PhpConstToTsConst\Tests\Fixtures\AnnotationTestFixture;
-use Prophecy\Prophet;
-
-namespace PhpConstToTsConst\Tests\Traits;
-
-use Composer\Autoload\ClassLoader;
-use PhpConstToTsConst\Tests\Fixtures\AnnotationTestFixture;
 use Prophecy\Prophet;
 
 trait MockTrait
@@ -20,7 +16,7 @@ trait MockTrait
 
         $classLoaderMock = (new Prophet())->prophesize(ClassLoader::class);
         $classLoaderMock->getClassMap()->willReturn([
-            $fixtureReflection->getName() => $fixtureReflection->getFileName()
+            $fixtureReflection->getName() => $fixtureReflection->getFileName(),
         ]);
 
         return $classLoaderMock->reveal();

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace PhpConstToTsConst\Traits;
+namespace Bolzer\TsConstEnum\Traits;
 
 use Symfony\Component\Validator\ConstraintViolationListInterface;
 use Symfony\Component\Validator\Validation;

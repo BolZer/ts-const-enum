@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace PhpConstToTsConst\Contracts;
+namespace Bolzer\TsConstEnum\Contracts;
 
 use Symfony\Component\Validator\ConstraintViolationListInterface;
 use Symfony\Component\Validator\Mapping\ClassMetadata;

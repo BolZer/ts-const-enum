@@ -1,9 +1,9 @@
 #!/usr/bin/env php
 <?php declare(strict_types=1);
 
+use Bolzer\TsConstEnum\Commands\GenerateCommand;
+use Bolzer\TsConstEnum\Configuration\Config;
 use Composer\Autoload\ClassLoader;
-use PhpConstToTsConst\Commands\GenerateCommand;
-use PhpConstToTsConst\Configuration\Config;
 use Symfony\Component\Console\Application;
 
 $classLoader = getClassLoader();
@@ -34,7 +34,7 @@ if (!$config->isValid()) {
 }
 
 $consoleApplication = new Application();
-$consoleApplication->setName('PHP-CONST-TO-TYPESCRIPT');
+$consoleApplication->setName('TsConstEnum');
 $consoleApplication->add(new GenerateCommand($config, $classLoader));
 $consoleApplication->run();
 

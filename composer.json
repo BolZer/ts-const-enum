@@ -1,6 +1,6 @@
 {
-  "name": "bolzer/php-const-to-typescript",
-  "bin": ["bin/php-const-to-ts.php"],
+  "name": "bolzer/ts-const-enum",
+  "bin": ["bin/ts-const-enum.php"],
   "description": "A command line tool to generate typescript constants from your php constants",
   "minimum-stability": "dev",
   "license": "MIT",
@@ -12,12 +12,11 @@
   ],
   "autoload": {
     "psr-4": {
-      "PhpConstToTsConst\\": ""
+      "Bolzer\\TsConstEnum\\": ""
     }
   },
   "require": {
     "php": ">=8.0",
-    "doctrine/annotations": "1.13.x-dev",
     "symfony/console": "^5.3",
     "symfony/validator": "^5.3"
   }

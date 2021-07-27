@@ -1,16 +1,17 @@
-# PHP-CONST-TO-TYPESCRIPT
+# Ts-Const-Enum (PHP)
 
 ## Description
 
-This tool will transform PHP Scalar-Constants - which are public - to Typescript Constants and generates Typescript Enums from PHP Makeshift-Enums.
-This is useful if you want to reference a value in a condition. You can easily import the generated constants. This has
+This tool will transform PHP Scalar-Constants - which are annotated with the provided attributes - to Typescript Constants and generates Typescript 
+Enums from annotated PHP one dimensional constant arrays. This may be useful if you want to reference a value in a condition within your Typescript Code. You can easily import the generated constants. This has
 many advantages over just stating the value. If the value of the constant changes, your code won't break easily. 
-If you change the name of a php constant the tyepscript code won't compile unless you changed all occurrences of the old
+If you change the name of a php constant the typescript code won't compile unless you changed all occurrences of the old
 constant name.
 
 This is especially useful if you use alot of JS/TS-Frameworks and do conditionally rendering in regards to 
-values / properties. The Constants are prefixed with the namespace of where the constants resides to easily identify
-then in your IDE and to ensure tree-shaking with webpack and co.
+values / properties. The Constants are by default prefixed with the declaring class followed by __ and the 
+constant name. You may provide an alias on attribute-level. Keep in mind to have unique names / alias as the
+constants will land in one file.
 
 ### Usecase
 
@@ -35,31 +36,54 @@ if (reflection.type === TARGET_CLASS_CONSTANT) {
 1. Require the dependency
 
 ```shell
-composer require bolzer/php-const-to-typescript
+composer require bolzer/ts-const-enum
 ```
 
 2. Create in your root (where the vendor folder is) dir a config file
 ```shell
-touch .php-const-to-ts-config.php
+touch .ts-const-enum-config.php
 ```
 
 3. Add the following content to the previously created file with the output path.
 ```php
 <?php declare(strict_types=1);
 
-use PhpConstToTsConst\Configuration\Config;
+use Bolzer\TsConstEnum\Configuration\Config;
 
 return (new Config())
     ->setOutputPath(__DIR__ . '/generated/constants.ts')
 ;
 ```
 
-4. Take a look at the config class for more config options
-5. Run the binary of the tool
-```shell
-php ./vendor/bin/php-const-to-typescript.php generate
+4. Take a look at the config class for more config option.
+5. Annotate some constants and arrays in your php code with the provided attributes `Constant` and `Enum`
+
+**Example**
+
+```php
+<?php declare(strict_types=1);
+
+namespace Test\Example;
+
+use Bolzer\TsConstEnum\Attributes\Constant;use Bolzer\TsConstEnum\Attributes\Enum;
+
+class ExampleClass {
+    #[Constant(alias: "Test")]
+    private const TEST = "test";
+    
+    #[Enum]
+    private const TEST_2 = [
+        self::TEST => "value"
+    ];
+}
 ```
-6. Start using the constants
+
+6. Run the binary of the tool
+```shell
+composer dump-autoload -o --quiet
+php ./vendor/bin/ts-const-enum.php generate
+```
+7. Start using the constants
 
 ## What's a makeshift enum in PHP?
 Currently there're no enums in PHP. This will change with the release of PHP 8.2.
