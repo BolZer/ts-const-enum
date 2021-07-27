@@ -13,6 +13,8 @@ class GeneratorTest extends TestCase
 {
     use MockTrait;
 
+    private const UPDATE_OUTPUT_FILES = false;
+
     public function testCollectAnnotatedConstantsFromClassLoader(): void
     {
         $service = new Generator(new Config(), $this->getMockedClassLoader());
@@ -29,8 +31,17 @@ class GeneratorTest extends TestCase
     {
         $service = new Generator(new Config(), $this->getMockedClassLoader());
         $result = $service->generate();
-        static::assertCount(3, $result);
 
-        $test = 0;
+        $testOutputFile = __DIR__ . '/Output/test_generate_output.txt';
+        $assertableContent = \implode("\n", $result);
+
+        if (self::UPDATE_OUTPUT_FILES) {
+            \file_put_contents($testOutputFile, $assertableContent);
+        }
+
+        static::assertStringEqualsFile(
+            $testOutputFile,
+            $assertableContent,
+        );
     }
 }

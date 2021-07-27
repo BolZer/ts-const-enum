@@ -74,3 +74,4 @@ fabric.properties
 .ts-const-enum-config.php
 composer.phar
 ./TestPackage
+.php-cs-fixer.cache

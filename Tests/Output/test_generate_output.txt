@@ -1,0 +1,3 @@
+export const AnnotationTestFixture__TEST_VALUE: string = 'mixed';
+export enum AnnotationTestFixture__TEST_ARRAY { 'mixed' = 'another_value' }
+export enum TestName { 'another_value' = 'another_value' }
