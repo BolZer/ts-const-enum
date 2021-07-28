@@ -1,4 +1,5 @@
 # Ts-Const-Enum (PHP)
+![maintained](https://img.shields.io/maintenance/yes/2021?style=for-the-badge)
 
 ## Description
 
@@ -111,7 +112,3 @@ export enum Membership_TYPES {
     'PREMIUM' = 'premium',
 }
 ```
-
-## Stability
-The tool is in active development. Therefore you need to add this repository in your composer.json. 
-There's currently no packagist package available. There is also the chance of bugs.
