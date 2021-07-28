@@ -3,7 +3,7 @@
   "bin": ["bin/ts-const-enum.php"],
   "description": "A command line tool to generate typescript constants from your php constants",
   "minimum-stability": "dev",
-  "license": "MIT",
+  "license": "Apache-2.0",
   "authors": [
     {
       "name": "Jan Noehles",
